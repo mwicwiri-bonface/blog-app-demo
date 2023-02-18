@@ -4,6 +4,8 @@ from django.db import models
 from django_countries.fields import CountryField
 from phonenumber_field.modelfields import PhoneNumberField
 
+from core.utils import TimeStampModel
+
 
 class User(AbstractUser):
     class UserTypes(models.TextChoices):
@@ -16,7 +18,7 @@ class User(AbstractUser):
         return self.username
 
 
-class Profile(models.Model):
+class Profile(TimeStampModel):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     bio = models.TextField()
     phone_number = PhoneNumberField(blank=True)
