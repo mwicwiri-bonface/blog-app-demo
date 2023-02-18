@@ -18,4 +18,4 @@ class Profile(models.Model):
     bio = models.TextField()
     phone_number = PhoneNumberField(blank=True)
     country = CountryField()
-
+    image = models.ImageField(upload_to="profiles/%Y/%m/", default="profiles/default.png")
