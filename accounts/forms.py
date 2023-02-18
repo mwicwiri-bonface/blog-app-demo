@@ -59,4 +59,4 @@ class UserAdminChangeForm(ModelForm):
 class ProfileModelForm(ModelForm):
     class Meta:
         model = Profile
-        fields = ['bio', 'phone_number', 'image', 'nationality']
+        fields = ['bio', 'phone_number', 'image', 'country']
