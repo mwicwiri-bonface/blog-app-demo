@@ -1,18 +1,18 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, TemplateView
 
 from blog.forms import CategoryModelForm
-from blog.models import Category
+from blog.models import Category, Blog
 
 
-def home(request):
-    form = CategoryModelForm()
-    if request.method == "POST":
-        form = CategoryModelForm(request.POST)
-        if form.is_valid():
-            form.save()
-    return render(request, "index.html", dict(form=form))
+class HomePage(TemplateView):
+    template_name = "index.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['latest_blogs'] = Blog.objects.all()[:5]
+        return context
 
 
 class CategoryCreateView(CreateView):
