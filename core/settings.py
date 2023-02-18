@@ -129,6 +129,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # model used for user authentication
 AUTH_USER_MODEL = 'accounts.User'
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+CKEDITOR_UPLOAD_PATH = 'content/ckeditor/'
 CKEDITOR_CONFIGS = {
     'default': {
         'skin': 'moono',
